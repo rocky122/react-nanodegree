@@ -1,10 +1,21 @@
-import React, { Component } from "react";
+import React from "react";
 import Contact from "./Contact";
-export default class ListContacts extends Component {
-  render() {
-    console.log("Props", this.props);
-    return <ol className="contact-list">
-        {this.props.contacts.map(c => <Contact key={c.id} contact={c}/>)}
-    </ol>
-  }
+import PropTypes from 'prop-types'
+
+function ListContacts({ contacts, removeContact }) {
+  return <ol className="contact-list">
+      {contacts.map(contact => (
+        <Contact
+          key={contact.id}
+          contact={contact}
+          removeContact={removeContact}
+        />
+      ))}
+    </ol>;
 }
+
+ListContacts.propTypes = {
+  contacts : PropTypes.array.isRequired,
+  removeContact : PropTypes.func.isRequired
+}
+export default ListContacts;

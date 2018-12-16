@@ -26,6 +26,9 @@ class App extends Component {
       ]
     };
   }
+  filterContacts = (query) => {
+    
+  }
   removeContact = contact => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(c => c.id !== contact.id)
@@ -45,7 +48,7 @@ class App extends Component {
           it does not return a value but some markup.
          */}
 
-        <ListContacts contacts={contacts} removeContact={this.removeContact} />
+        <ListContacts filterContacts={this.filterContacts} contacts={contacts} removeContact={this.removeContact} />
         {/* It is really easy to reduce those elements.Here ContactList 
         is composed of Contacts.So we can say that ContactList is the parent
         component and it will hold a bunch of Contact Components */}
